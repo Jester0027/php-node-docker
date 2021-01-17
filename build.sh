@@ -3,8 +3,8 @@
 dockerRepo='jester0027/php-node-runtime'
 
 function buildAndDeploy() {
-    docker build $path --tag $repo
-    docker push $repo
+    docker build $1 --tag $2
+    docker push $2
 }
 
 buildAndDeploy '.' $dockerRepo:main
