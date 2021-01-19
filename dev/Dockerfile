@@ -6,6 +6,9 @@ RUN apt-get update && apt-get install -y \
     # Packages #
     ####    ####
         git \
+        zip \
+        unzip \
+        wget \
         libzip-dev \
         zlib1g-dev \
         libxml2 \
