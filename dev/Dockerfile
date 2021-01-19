@@ -52,9 +52,17 @@ RUN npm i -g yarn \
     && yarn -v
 
 ### Chromium installation for e2e testing
-# Chromium and ChromeDriver
+# Chromium
 ENV PANTHER_NO_SANDBOX 1
 ENV PANTHER_CHROME_ARGUMENTS='--disable-dev-shm-usage'
+ENV PANTHER_CHROME_BINARY=/usr/bin/chromium
 RUN apt-get install -y chromium
+# Chrome driver
+RUN wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip \
+    && unzip chromedriver_linux64.zip \
+    && mv chromedriver /usr/bin/chromedriver \
+    && chown root:root /usr/bin/chromedriver \
+    && chmod +x /usr/bin/chromedriver \
+    && rm -rf chromedriver_linux64.zip
 
 RUN rm -rf /var/lib/apt/lists/*
